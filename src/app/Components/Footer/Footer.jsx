@@ -7,7 +7,7 @@ import { GiClothes } from "react-icons/gi";
 
 const Footer = () => {
   return (
-    <footer className="footer bg-black footer-horizontal footer-center text-primary-content p-10">
+    <footer className="footer bg-black footer-horizontal footer-center text-primary-content p-10 mt-10">
       <aside>
         <div className="flex justify-center items-center -ml-4 md:px-4">
           <div className="-mr-3">

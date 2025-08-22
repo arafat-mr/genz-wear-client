@@ -1,9 +1,12 @@
 import Image from "next/image";
+import Hero from "./Components/Hero";
+import Products from "./Components/Products";
 
 export default function Home() {
   return (
-    <h1 className="text-red-500 min-h-screen">
-      Hello
-    </h1>
+    <>
+    <Hero/>
+    <Products/>
+    </>
   );
 }
