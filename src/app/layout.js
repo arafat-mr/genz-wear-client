@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer/Footer";
 import Hero from "./Components/Hero";
+import NextAuthProviders from "./providers/NextAuthProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased rubik`}
       >
 
+
+<NextAuthProviders>
+  
+
+
         <div className="min-h-screen w-full bg-[#fefcff] relative">
   {/* Dreamy Sky Pink Glow */}
   <div
@@ -40,6 +46,7 @@ export default function RootLayout({ children }) {
     }}
   />
     {/* Your Content/Components */}
+
     <div className="relative z-10">
 
      <Navbar/>
@@ -53,7 +60,7 @@ export default function RootLayout({ children }) {
         <Footer/>
         </div>
 </div>
-       
+       </NextAuthProviders>
       </body>
     </html>
   );

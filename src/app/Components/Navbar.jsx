@@ -1,12 +1,19 @@
-import Link from 'next/link';
-import React from 'react';
-import { GiClothes } from 'react-icons/gi';
+"use client";
+
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import React from "react";
+import { GiClothes } from "react-icons/gi";
+import { toast, ToastContainer } from "react-toastify";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+  console.log(session);
+
   const links = (
     <>
       <Link href="/">Home</Link>
-      <Link href="/products">Products</Link>
+      <Link href="/AllProducts">Products</Link>
     </>
   );
 
@@ -53,11 +60,37 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 flex gap-10">{links}</ul>
       </div>
 
-      <div className="navbar-end">
-        <Link href="/cart" className="btn btn-secondary">
-          Cart
-        </Link>
+      <div className="navbar-end space-x-2 md:space-x-3">
+        {status !== "authenticated" ? (
+          <>
+            <Link
+              href="/Login"
+              className="btn btn-sm md:btn-md btn-secondary btn-outline rounded-md"
+            >
+              Login
+            </Link>
+            <Link
+              href="/Register"
+              className="btn btn-sm md:btn-md btn-secondary btn-outline rounded-md"
+            >
+              Register
+            </Link>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                toast.success("Logged out successfully", { autoClose: 2000 });
+                signOut({ redirect: false });
+              }}
+              className="btn btn-sm md:btn-md btn-secondary btn-outline rounded-md"
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

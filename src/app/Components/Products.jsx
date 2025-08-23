@@ -56,15 +56,15 @@ const Products = async () => {
               </div>
 
               {/* Buttons */}
-      <div className="flex gap-4 mt-3">
+      <div className="flex gap-4 mt-3 w-full ">
   <Link
     href={`/products/${product._id.toString()}`}
-    className=" btn btn-sm md:btn-md bg-gray-200 text-gray-800 font-bold rounded-md text-center hover:bg-gray-300 transition text-sm"
+    className="flex-1 btn btn-sm md:btn-md bg-gray-200 text-gray-800 font-bold rounded-md text-center hover:bg-gray-300 transition text-sm"
   >
     Show Details
   </Link>
 
-  <button className=" btn btn-sm md:btn-md  bg-blue-500 text-white font-bold rounded-md shadow hover:bg-blue-400 transition text-sm">
+  <button className=" flex-1 btn btn-sm md:btn-md  bg-blue-500 text-white font-bold rounded-md shadow hover:bg-blue-400 transition text-sm">
     Buy Now
   </button>
 </div>

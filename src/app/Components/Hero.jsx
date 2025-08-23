@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="relative h-[80vh] w-full flex items-center justify-center text-center text-white overflow-hidden">
+    <section className="relative h-[80vh] max-w-11/12 mx-auto mt-5 rounded-xl flex items-center justify-center text-center text-white overflow-hidden">
   <img
     src="https://i.ibb.co/MkbsK4v1/faith-lee-rg5-Wfu-Aih-U8-unsplash.jpg"
     alt="GenzWear Hero"
