@@ -9,7 +9,7 @@ const Hero = () => {
     className="absolute inset-0 w-full h-full object-cover"
   />
   {/* <div className="absolute inset-0 bg-black bg-opacity-40 -z-10"></div> */}
-  <div className="relative z-10 px-4">
+  <div className="relative z-10 px-4 ">
     <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
       Step Into <span className="text-yellow-400">GenzWear</span>
     </h1>

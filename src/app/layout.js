@@ -40,10 +40,18 @@ export default function RootLayout({ children }) {
     }}
   />
     {/* Your Content/Components */}
+    <div className="relative z-10">
+
      <Navbar/>
-       
+    </div>
+        {/* <div className="relative z-5"> */}
+
         {children}
+        {/* </div> */}
+        <div className="relative z-5">
+
         <Footer/>
+        </div>
 </div>
        
       </body>
