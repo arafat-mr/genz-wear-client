@@ -2,7 +2,7 @@
 import { loginUser } from "@/app/actions/auth/loginUser";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-
+import GoogleProvider from "next-auth/providers/google";
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [
@@ -57,8 +57,14 @@ export const authOptions = {
     //   return null
     //   ---
     }
+  }),
+   GoogleProvider({
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    
   })
 ],
+
 pages :{
     signIn :'/Login',
     // signOut: '',

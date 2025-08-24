@@ -1,19 +1,35 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import { GiClothes } from "react-icons/gi";
 import { toast, ToastContainer } from "react-toastify";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
-  console.log(session);
+  // console.log(session?.user);
+  const router = useRouter();
+  // useEffect(() => {
+  //   if (status === "authenticated" && session?.user) {
+  //     toast.success(`Welcome ${session.user.name}`, { autoClose: 2000 });
+  //     // optional: delay navigation if you want
+  //     // setTimeout(() => router.push('/'), 500);
+  //   }
+  // }, []);
 
   const links = (
     <>
       <Link href="/">Home</Link>
       <Link href="/AllProducts">Products</Link>
+
+      {
+        session?.user ? 
+
+      <Link href='/DashBoard'>Dashboard</Link>:<></>
+      }
     </>
   );
 
@@ -61,7 +77,9 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end space-x-2 md:space-x-3">
-        {status !== "authenticated" ? (
+        {status === "loading" ? (
+          <span className="loading loading-spinner"></span>
+        ) : !session ? (
           <>
             <Link
               href="/Login"
@@ -78,10 +96,23 @@ const Navbar = () => {
           </>
         ) : (
           <>
+            <div className="h-10 w-10 rounded-full  overflow-hidden">
+              <Image
+                src={
+                  session?.user?.image ||
+                  "https://i.ibb.co/qMCMB6Tq/360-F-229758328-7x8jw-Cwjt-BMm-C6rg-Fz-LFh-Zo-Ep-Lob-B6-L8.png"
+                }
+                width={40}
+                height={40}
+                alt="user image"
+                className="object-cover w-full h-full"
+              />
+            </div>
+
             <button
-              onClick={() => {
+              onClick={async () => {
                 toast.success("Logged out successfully", { autoClose: 2000 });
-                signOut({ redirect: false });
+                await signOut({ redirect: false }); // toast triggers before session changes
               }}
               className="btn btn-sm md:btn-md btn-secondary btn-outline rounded-md"
             >

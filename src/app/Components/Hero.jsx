@@ -17,7 +17,7 @@ const Hero = () => {
       Trendy clothing & fashion essentials for your bold style.
     </p>
     <a
-      href="#products"
+      href="/AllProducts"
       className="relative inline-block px-8 py-4 font-bold text-white bg-blue-500 rounded-lg shadow-xl
                  hover:bg-blue-400 hover:shadow-blue-500 transition-all duration-300
                  before:absolute before:inset-0 before:rounded-lg "

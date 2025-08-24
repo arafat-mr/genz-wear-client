@@ -6,7 +6,7 @@ import React from "react";
 const AllProducts = async () => {
   // Fetch products from MongoDB
   const serviceCollection = await dbConnect("products");
-  const products = await serviceCollection.find({}).toArray();
+  const products = await serviceCollection.find({}).sort({_id:-1}).toArray();
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-7xl">
@@ -17,7 +17,7 @@ const AllProducts = async () => {
           <div
             key={product._id.toString()}
             className="bg-white rounded-xl overflow-hidden p-4 flex flex-col justify-between
-                       shadow-lg transition-transform duration-300 hover:scale-105"
+                       shadow-lg transition-transform duration-300 z-10"
           >
             {/* Product Image */}
             <div className="relative w-full h-48">

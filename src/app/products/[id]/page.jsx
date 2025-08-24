@@ -10,10 +10,10 @@ const ProductDetails = async ({ params }) => {
   if (!data) return <div>Product not found</div>;
 
   return (
-    <div className="container mx-auto px-4 py-10 min-h-[70vh]">
+    <div className="container mx-auto px-4 py-10 min-h-[70vh] relative z-10">
       <div className="flex flex-col md:flex-row gap-10">
         {/* Product Image */}
-        <div className="relative w-full md:w-1/2 h-96 md:h-[500px] rounded-lg overflow-hidden shadow-lg">
+        <div className="relative  w-full md:w-1/2 h-96 md:h-[500px] rounded-lg overflow-hidden shadow-lg">
           <Image
             src={data.image}
             alt={data.name}
@@ -67,7 +67,7 @@ const ProductDetails = async ({ params }) => {
 
           {/* Stock */}
           <p className="mt-4 text-gray-700">
-            <span className="font-semibold">Stock:</span> {data.stock.$numberInt}
+            <span className="font-semibold">Stock:</span> {data.stock}
           </p>
 
           {/* Action Buttons */}

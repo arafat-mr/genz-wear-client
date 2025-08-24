@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Products = async () => {
   const serviceCollection = await dbConnect("products");
-  const products = await serviceCollection.find({}).toArray();
+  const products = await serviceCollection.find({}).sort({_id:-1}).limit(8).toArray();
 
   return (
     <div className=" mx-auto px-2 py-10 max-w-11/12">

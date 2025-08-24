@@ -9,12 +9,14 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { getSession, signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
-// import { useRouter } from "next/router";
+import SocialLogin from "./SocialLogin/SocialLogin";
+import LoadingSpinner from '../../app/LoadingSpinner'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,81 +29,99 @@ const Login = () => {
     },
   });
 
-  //   const onSubmit = async (data) => {
-  //     setLoginError(""); // reset error before submitting
-  //     // const res = await signIn("credentials", {
-  //     // //   redirect: false,
-  //     // //   credentials: {
-  //     // //     email: data.email,
-  //     // //     password: data.password,
-  //     // //   },
-  //     // email: data.email,
-  //     // password: data.password
-  //     // });
-  //     try {
-  //       const res = await signIn("credentials", {
-  //           redirect: false,
-  //         //   credentials: {
-  //         //     email: data.email,
-  //         //     password: data.password,
-  //         //   },
-  //         email: data.email,
-  //         password: data.password
 
+  // const onSubmit = async (data) => {
+  //   setLoginError("");
+
+  //   try {
+  //     const res = await signIn("credentials", {
+  //       redirect: false,
+  //       email: data.email,
+  //       password: data.password,
+  //       // callbackUrl:'/'
   //     });
+  //     if (res?.ok) {
+  //     // Fetch session after successful login
+  //     const session = await getSession();
+  //     console.log("Logged in user:", session?.user);
 
-  //     if(res.ok){
-
-  //           router.push('/')
-  //           reset()
-  //           toast.success(`Login successful! welcome ${data.name} `, { position: "top-right" });
-  //     } else{
-  //         toast.error('error')
-  //     }
-
-  //     } catch (err) {
-  //       console.log(err);
-  //       alert('failed')
-  //       return
-  //     }
-
+  //     toast.success(`Welcome ${session?.user?.name}`, {
+  //       position: "top-right",
+  //     });
+  //     router.push('/')
+  //   }
+      
+  //   } catch (err) {
+  //     console.error(err);
+  //     toast.error("Something went wrong. Please try again.", {
+  //       position: "top-right",
+  //     });
+  //   }
   //   };
 
-  const onSubmit = async (data) => {
-    setLoginError("");
+// const onSubmit = async (data) => {
+//   setLoginError("");
+//   setLoading(true); // show spinner
 
-    try {
-      const res = await signIn("credentials", {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
+//   try {
+//     const res = await signIn("credentials", {
+//       redirect: false,
+//       email: data.email,
+//       password: data.password,
+//     });
 
-      if (res?.error) {
-        // ❌ Wrong credentials
-        toast.error("Invalid email or password", { position: "top-right" });
-        return;
-      }
+//     if (res?.ok) {
+//       const session = await getSession();
+//       toast.success(`Welcome ${session?.user?.name}`, { position: "top-right" });
+//       router.push("/");
+//     } else {
+//       setLoginError("Invalid email or password");
+//       toast.error("Invalid email or password", { position: "top-right" });
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     toast.error("Something went wrong. Please try again.", { position: "top-right" });
+//   } finally {
+//     setLoading(false); // hide spinner
+//   }
+// };
 
+
+const onSubmit = async (data) => {
+  setLoginError("");
+  setLoading(true); // show spinner
+
+  try {
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+
+    if (res?.ok) {
       const session = await getSession();
-
-      toast.success(
-        `Login successful! Welcome ${session?.user?.name || data.email}`,
-        { position: "top-right" } 
-      );
-
-      reset();
+      toast.success(`Welcome ${session?.user?.name}`, { position: "top-right" });
       router.push("/");
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong. Please try again.", {
-        position: "top-right",
-      });
+    } else {
+      setLoginError("Invalid email or password");
+      toast.error("Invalid email or password", { position: "top-right" });
     }
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Something went wrong. Please try again.", { position: "top-right" });
+  } finally {
+    setLoading(false); // hide spinner
+  }
+};
 
   return (
     <div className="flex flex-col md:flex-row justify-between items-center gap-10 p-5 md:px-5 py-10 max-w-7xl mx-auto">
+      {loading && (
+  <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
+    <LoadingSpinner />
+  </div>
+)}
+
       {/* Lottie Animation */}
       <div className="md:w-1/2 w-full">
         <Lottie animationData={login} loop={true} />
@@ -185,12 +205,16 @@ const Login = () => {
 
           {/* Submit Button */}
           <button
-            type="submit"
-            className="px-6 py-3 w-full text-center font-semibold bg-pink-500 text-white rounded-md shadow-lg
-                       hover:shadow-pink-400/80 hover:scale-105 transition duration-300 hover:animate-pulse text-sm"
-          >
-            Login
-          </button>
+  type="submit"
+  className="px-6 py-3 w-full text-center font-semibold bg-pink-500 text-white rounded-md shadow-lg
+             hover:shadow-pink-400/80 hover:scale-105 transition duration-300 hover:animate-pulse text-sm flex items-center justify-center gap-2"
+  disabled={loading}
+>
+  {loading ? <LoadingSpinner /> : "Login"}
+</button>
+          <div>
+            <SocialLogin/>
+          </div>
         </form>
       </div>
       <ToastContainer />
