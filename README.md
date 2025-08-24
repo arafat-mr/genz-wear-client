@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GenzWear Next.js E-Commerce
 
-## Getting Started
+A modern e-commerce web application built with Next.js, MongoDB, and NextAuth for authentication. Users can browse products, view details, post reviews, and make purchases. Admins can manage products, approvals, and users.
 
-First, run the development server:
+## Features
+- User registration and login (email/password & Google OAuth)
+- Product listing with images, sizes, colors, stock, and prices
+- Add new products 
+- View latest products
+- Responsive design with Tailwind CSS
+- Review system per product
+- Loading spinners & toast notifications
+- Protected routes for admin actions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Setup & Installation
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/yourusername/genzwear-nextjs.git
+   cd genzwear-nextjs
+2. Install dependencies:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npm install
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Set environment variables in .env.local:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+MONGO_DB_URI=your_mongo_db_connection_string
+DB_NAME=GenzWearDB
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-## Learn More
+4. Run the development server:
 
-To learn more about Next.js, take a look at the following resources:
+ npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ Visit http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Route Summary
 
-## Deploy on Vercel
+Public Routes: /, /products, /products/:id, /Login, /Register
+API Routes: /api/products (POST), /api/products/:id (GET), /api/users/:email/role (GET), /api/auth/*
+Protected/Admin Routes: /dashboard, /dashboard/add-product, /dashboard/users, /dashboard/products
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Technologies Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js, MongoDB, NextAuth.js, Tailwind CSS & DaisyUI, React Hook Form, React Spinners & Lottie Animations, React Toastify
