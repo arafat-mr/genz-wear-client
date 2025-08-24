@@ -1,6 +1,10 @@
+
+
+
 import dbConnect from "@/Library/dbConnect";
 import Image from "next/image";
 import Link from "next/link";
+export const dynamic = "force-dynamic";
 
 const Products = async () => {
   const serviceCollection = await dbConnect("products");
@@ -56,15 +60,15 @@ const Products = async () => {
               </div>
 
               {/* Buttons */}
-      <div className="flex gap-4 mt-3 w-full ">
+      <div className="flex flex-wrap gap-3 mt-3 w-full">
   <Link
     href={`/products/${product._id.toString()}`}
-    className="flex-1 btn btn-sm md:btn-md bg-gray-200 text-gray-800 font-bold rounded-md text-center hover:bg-gray-300 transition text-sm"
+    className="flex-1 min-w-[120px] btn btn-sm md:btn-md bg-gray-200 text-gray-800 font-bold rounded-md text-center hover:bg-gray-300 transition text-sm"
   >
     Show Details
   </Link>
 
-  <button className=" flex-1 btn btn-sm md:btn-md  bg-blue-500 text-white font-bold rounded-md shadow hover:bg-blue-400 transition text-sm">
+  <button className="flex-1 min-w-[120px] btn btn-sm md:btn-md bg-blue-500 text-white font-bold rounded-md shadow hover:bg-blue-400 transition text-sm">
     Buy Now
   </button>
 </div>

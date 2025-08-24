@@ -26,7 +26,7 @@ npm install
 MONGO_DB_URI=your_mongo_db_connection_string
 DB_NAME=GenzWearDB
 NEXTAUTH_SECRET=your_nextauth_secret
-NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL=https://genz-wear.vercel.app
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 
@@ -34,14 +34,14 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 
  npm run dev
 
- Visit http://localhost:3000
+ Visit https://genz-wear.vercel.app
 
-Route Summary
+## Route Summary : 
 
 Public Routes: /, /products, /products/:id, /Login, /Register
 API Routes: /api/products (POST), /api/products/:id (GET), /api/users/:email/role (GET), /api/auth/*
 Protected/Admin Routes: /dashboard, /dashboard/add-product, /dashboard/users, /dashboard/products
 
-Technologies Used
+ ## Technologies Used
 
 Next.js, MongoDB, NextAuth.js, Tailwind CSS & DaisyUI, React Hook Form, React Spinners & Lottie Animations, React Toastify

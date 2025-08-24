@@ -4,7 +4,7 @@ import  { MongoClient, ServerApiVersion }  from 'mongodb'
 
 
 export default function dbConnect(collectionName){
-const uri = process.env.MONGO_DB_URI
+const uri = process.env.NEXT_PUBLIC_MONGO_DB_URI
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,

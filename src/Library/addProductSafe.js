@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 export default async function addProductSafe(productData) {
   try {
-    const uri = process.env.MONGO_DB_URI;
+    const uri = process.env.NEXT_PUBLIC_MONGO_DB_URI;
     if (!uri) throw new Error("MONGO_DB_URI not set");
 
     // create independent client

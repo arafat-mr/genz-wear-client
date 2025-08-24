@@ -3,10 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 
+// 🚀 This forces server to fetch fresh data every request
+export const dynamic = "force-dynamic";  
+
 const AllProducts = async () => {
-  // Fetch products from MongoDB
   const serviceCollection = await dbConnect("products");
-  const products = await serviceCollection.find({}).sort({_id:-1}).toArray();
+  const products = await serviceCollection.find({}).sort({ _id: -1 }).toArray();
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-7xl">
@@ -16,10 +18,8 @@ const AllProducts = async () => {
         {products.map((product) => (
           <div
             key={product._id.toString()}
-            className="bg-white rounded-xl overflow-hidden p-4 flex flex-col justify-between
-                       shadow-lg transition-transform duration-300 z-10"
+            className="bg-white rounded-xl overflow-hidden p-4 flex flex-col justify-between shadow-lg transition-transform duration-300 z-10"
           >
-            {/* Product Image */}
             <div className="relative w-full h-48">
               <Image
                 src={product.image}
@@ -29,7 +29,6 @@ const AllProducts = async () => {
               />
             </div>
 
-            {/* Product Info */}
             <div className="flex flex-col gap-2 mt-4">
               <h3 className="font-bold text-lg">{product.name}</h3>
               <p className="text-gray-600 text-sm">{product.description}</p>
@@ -37,7 +36,6 @@ const AllProducts = async () => {
                 ${product.price.$numberDouble || product.price}
               </span>
 
-              {/* Details Button */}
               <Link
                 href={`/products/${product._id.toString()}`}
                 className="mt-3 px-4 py-2 bg-blue-500 text-white font-bold rounded-md text-center hover:bg-blue-400 transition"
