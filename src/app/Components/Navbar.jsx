@@ -12,13 +12,7 @@ const Navbar = () => {
   const { data: session, status } = useSession();
   // console.log(session?.user);
   const router = useRouter();
-  // useEffect(() => {
-  //   if (status === "authenticated" && session?.user) {
-  //     toast.success(`Welcome ${session.user.name}`, { autoClose: 2000 });
-  //     // optional: delay navigation if you want
-  //     // setTimeout(() => router.push('/'), 500);
-  //   }
-  // }, []);
+ 
 
   const links = (
     <>
@@ -28,7 +22,7 @@ const Navbar = () => {
       {
         session?.user ? 
 
-      <Link href='/DashBoard'>Dashboard</Link>:<></>
+      <Link href='/DashBoard'>Dashboard</Link>:  <></>
       }
     </>
   );
@@ -65,7 +59,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex justify-center items-center -ml-4">
           <GiClothes size={20} className="-mr-3" />
-          <Link href="/" className="btn btn-ghost text-xl">
+          <Link href="/" className=" text-xl">
             Genz <span className="text-yellow-500 -ml-1">Wear</span>
           </Link>
         </div>

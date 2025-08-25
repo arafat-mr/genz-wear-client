@@ -30,63 +30,6 @@ const Login = () => {
   });
 
 
-  // const onSubmit = async (data) => {
-  //   setLoginError("");
-
-  //   try {
-  //     const res = await signIn("credentials", {
-  //       redirect: false,
-  //       email: data.email,
-  //       password: data.password,
-  //       // callbackUrl:'/'
-  //     });
-  //     if (res?.ok) {
-  //     // Fetch session after successful login
-  //     const session = await getSession();
-  //     console.log("Logged in user:", session?.user);
-
-  //     toast.success(`Welcome ${session?.user?.name}`, {
-  //       position: "top-right",
-  //     });
-  //     router.push('/')
-  //   }
-      
-  //   } catch (err) {
-  //     console.error(err);
-  //     toast.error("Something went wrong. Please try again.", {
-  //       position: "top-right",
-  //     });
-  //   }
-  //   };
-
-// const onSubmit = async (data) => {
-//   setLoginError("");
-//   setLoading(true); // show spinner
-
-//   try {
-//     const res = await signIn("credentials", {
-//       redirect: false,
-//       email: data.email,
-//       password: data.password,
-//     });
-
-//     if (res?.ok) {
-//       const session = await getSession();
-//       toast.success(`Welcome ${session?.user?.name}`, { position: "top-right" });
-//       router.push("/");
-//     } else {
-//       setLoginError("Invalid email or password");
-//       toast.error("Invalid email or password", { position: "top-right" });
-//     }
-//   } catch (err) {
-//     console.error(err);
-//     toast.error("Something went wrong. Please try again.", { position: "top-right" });
-//   } finally {
-//     setLoading(false); // hide spinner
-//   }
-// };
-
-
 const onSubmit = async (data) => {
   setLoginError("");
   setLoading(true); // show spinner

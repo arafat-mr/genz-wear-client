@@ -10,7 +10,7 @@ import { registerUser } from "../actions/auth/registerUser";
 import { useRouter } from "next/navigation";
 import SocialLogin from "../Login/SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
-import LoadingSpinner from "../LoadingSpinner"; // Import your spinner
+import LoadingSpinner from "../LoadingSpinner"; 
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);

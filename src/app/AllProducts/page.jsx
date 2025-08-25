@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 
-// 🚀 This forces server to fetch fresh data every request
+
 export const dynamic = "force-dynamic";  
 
 const AllProducts = async () => {

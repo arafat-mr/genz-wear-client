@@ -1,7 +1,9 @@
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 
 const DashBoard = () => {
+   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-500 to-yellow-400">
       <div className="bg-white shadow-2xl rounded-2xl p-12 text-center max-w-lg w-full">
